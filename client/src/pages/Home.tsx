@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import OpportunityCard from '../components/OpportunityCard';
 import { Opportunity } from '../types';
 import { apiUrl } from '../api';
-import logo from '../assets/logo.svg';
 
 const QUICK_SEARCHES = [
   { label: 'Food & Meals', term: 'food' },
@@ -39,7 +38,6 @@ function Home() {
       {/* Hero */}
       <section className="hero">
         <div className="hero-content">
-          <img src={logo} alt="IthacaServes" style={{ width: 64, marginBottom: 16, filter: 'brightness(10)' }} />
           <h1>Volunteer in Ithaca.<br />Make it count.</h1>
           <p>
             Find local volunteering and shadowing opportunities in the Ithaca community —
