@@ -1,0 +1,115 @@
+{
+  "opportunities": [
+    {
+      "id": 1,
+      "created_at": "2026-04-11T03:36:20.783Z",
+      "spots": 15,
+      "title": "Food Bank Volunteer",
+      "organization": "Ithaca Food Bank",
+      "description": "Help sort and distribute food donations to families in need. No experience required — just bring a positive attitude and willingness to help.",
+      "category": "Food & Hunger",
+      "location": "Ithaca, NY",
+      "date": "2026-04-18"
+    },
+    {
+      "id": 2,
+      "created_at": "2026-04-11T03:36:20.784Z",
+      "spots": 20,
+      "title": "Habitat for Humanity Build Day",
+      "organization": "Habitat for Humanity of Tompkins & Cortland Counties",
+      "description": "Join us for a Saturday build day. Help construct affordable housing for local families. Training provided on-site.",
+      "category": "Housing",
+      "location": "Ithaca, NY",
+      "date": "2026-04-25"
+    },
+    {
+      "id": 3,
+      "created_at": "2026-04-11T03:36:20.784Z",
+      "spots": 8,
+      "title": "Youth Tutoring Program",
+      "organization": "Southside Community Center",
+      "description": "Tutor K–8 students in math and reading after school. Commit to at least one afternoon per week.",
+      "category": "Education",
+      "location": "Southside Community Center, Ithaca",
+      "date": "2026-04-14"
+    },
+    {
+      "id": 4,
+      "created_at": "2026-04-11T03:36:20.784Z",
+      "spots": 5,
+      "title": "Hospital Shadowing — Patient Services",
+      "organization": "Cayuga Medical Center",
+      "description": "Shadow patient services staff and assist with non-clinical support tasks. Great for pre-med and public health students.",
+      "category": "Healthcare",
+      "location": "Cayuga Medical Center, Ithaca",
+      "date": "2026-04-21"
+    },
+    {
+      "id": 5,
+      "created_at": "2026-04-11T03:36:20.784Z",
+      "spots": 12,
+      "title": "Ithaca Farmers Market Setup",
+      "organization": "Ithaca Farmers Market",
+      "description": "Help vendors set up booths and assist shoppers at the Saturday market. Shifts from 8am–12pm.",
+      "category": "Community",
+      "location": "Steamboat Landing, Ithaca",
+      "date": "2026-04-19"
+    },
+    {
+      "id": 6,
+      "created_at": "2026-04-11T03:36:20.784Z",
+      "spots": 25,
+      "title": "Environmental Trail Cleanup",
+      "organization": "Finger Lakes Land Trust",
+      "description": "Spend a morning cleaning up trails at a local nature preserve. Gloves and bags provided.",
+      "category": "Environment",
+      "location": "Six Mile Creek Preserve, Ithaca",
+      "date": "2026-04-26"
+    },
+    {
+      "id": 7,
+      "created_at": "2026-04-11T03:36:20.784Z",
+      "spots": 6,
+      "title": "Animal Shelter Assistant",
+      "organization": "Tompkins County SPCA",
+      "description": "Walk dogs, socialize cats, and assist shelter staff. Must complete a brief orientation before first shift.",
+      "category": "Animals",
+      "location": "SPCA of Tompkins County, Ithaca",
+      "date": "2026-05-03"
+    },
+    {
+      "id": 8,
+      "created_at": "2026-04-11T03:36:20.784Z",
+      "spots": 4,
+      "title": "Refugee Resettlement Support",
+      "organization": "Catholic Charities of Tompkins/Tioga",
+      "description": "Help newly arrived refugee families with daily tasks — shopping, navigating services, and English conversation practice.",
+      "category": "Social Services",
+      "location": "Ithaca, NY",
+      "date": "2026-04-16"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "role": "student",
+      "created_at": "2026-04-11T03:42:33.326Z",
+      "name": "Matthew Wang",
+      "email": "mw2326@cornell.edu",
+      "password": "Milk677777!"
+    }
+  ],
+  "savedOpportunities": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "opportunity_id": 3,
+      "created_at": "2026-04-11T03:42:37.649Z"
+    }
+  ],
+  "nextId": {
+    "opportunities": 9,
+    "users": 2,
+    "savedOpportunities": 2
+  }
+}
