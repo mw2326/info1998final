@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
+import { apiUrl } from '../api';
 
 const FIREBASE_ERRORS: Record<string, string> = {
   'auth/email-already-in-use': 'An account with this email already exists.',
@@ -35,7 +36,7 @@ function Login() {
       if (mode === 'register') {
         const { user } = await createUserWithEmailAndPassword(auth, form.email, form.password);
         const token = await user.getIdToken();
-        await fetch('/api/auth/register', {
+        await fetch(apiUrl('/api/auth/register'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
           body: JSON.stringify({ name: form.name }),

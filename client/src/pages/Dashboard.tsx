@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import OpportunityCard from '../components/OpportunityCard';
 import { Opportunity } from '../types';
+import { apiUrl } from '../api';
 
 function Dashboard() {
   const { user, token, loading } = useAuth();
@@ -15,7 +16,7 @@ function Dashboard() {
     if (loading) return;
     if (!user) { navigate('/login'); return; }
 
-    fetch(`/api/users/${user.uid}/saved`, {
+    fetch(apiUrl(`/api/users/${user.uid}/saved`), {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json() as Promise<Opportunity[]>)
@@ -25,7 +26,7 @@ function Dashboard() {
 
   const handleUnsave = async (oppId: string) => {
     if (!user) return;
-    const res = await fetch(`/api/users/${user.uid}/saved/${oppId}`, {
+    const res = await fetch(apiUrl(`/api/users/${user.uid}/saved/${oppId}`), {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` },
     });

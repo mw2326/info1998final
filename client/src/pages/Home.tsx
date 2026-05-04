@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import OpportunityCard from '../components/OpportunityCard';
 import { Opportunity } from '../types';
+import { apiUrl } from '../api';
 import logo from '../assets/logo.svg';
 
 const QUICK_SEARCHES = [
@@ -21,7 +22,7 @@ function Home() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/api/opportunities')
+    fetch(apiUrl('/api/opportunities'))
       .then((res) => res.json())
       .then((data: Opportunity[]) => {
         setFeatured(data.slice(0, 3));

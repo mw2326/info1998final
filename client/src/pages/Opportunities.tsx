@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import OpportunityCard from '../components/OpportunityCard';
 import { Opportunity } from '../types';
+import { apiUrl } from '../api';
 
 const CATEGORIES = [
   'Food & Hunger', 'Housing', 'Education', 'Healthcare',
@@ -21,7 +22,7 @@ function Opportunities() {
     setLoading(true);
     const params = new URLSearchParams();
     if (category) params.set('category', category);
-    fetch(`/api/opportunities?${params.toString()}`)
+    fetch(apiUrl(`/api/opportunities?${params.toString()}`))
       .then((res) => res.json())
       .then((data: Opportunity[]) => {
         setAllOpportunities(data);

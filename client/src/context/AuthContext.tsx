@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState, ReactNode } from 'react
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import { User, AuthContextValue } from '../types';
+import { apiUrl } from '../api';
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
@@ -16,7 +17,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setToken(idToken);
 
         try {
-          const res = await fetch('/api/auth/me', {
+          const res = await fetch(apiUrl('/api/auth/me'), {
             headers: { Authorization: `Bearer ${idToken}` },
           });
           if (res.ok) {

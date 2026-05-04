@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Opportunity } from '../types';
+import { apiUrl } from '../api';
 
 function OpportunityDetail() {
   const { id } = useParams<{ id: string }>();
@@ -13,7 +14,7 @@ function OpportunityDetail() {
   const [saveMsg, setSaveMsg] = useState('');
 
   useEffect(() => {
-    fetch(`/api/opportunities/${id}`)
+    fetch(apiUrl(`/api/opportunities/${id}`))
       .then((res) => {
         if (!res.ok) throw new Error();
         return res.json() as Promise<Opportunity>;
@@ -28,7 +29,7 @@ function OpportunityDetail() {
       return;
     }
 
-    const res = await fetch(`/api/users/${user.uid}/saved`, {
+    const res = await fetch(apiUrl(`/api/users/${user.uid}/saved`), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
       body: JSON.stringify({ opportunityId: id }),

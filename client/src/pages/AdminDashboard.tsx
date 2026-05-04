@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Opportunity } from '../types';
+import { apiUrl } from '../api';
 
 const CATEGORIES = ['Food & Hunger', 'Housing', 'Education', 'Healthcare', 'Community', 'Environment', 'Animals', 'Social Services'];
 
@@ -29,7 +30,7 @@ function AdminDashboard() {
 
   const fetchOpportunities = async () => {
     try {
-      const res = await fetch('/api/opportunities');
+      const res = await fetch(apiUrl('/api/opportunities'));
       const data = await res.json() as Opportunity[];
       setOpportunities(data);
     } finally {
@@ -48,7 +49,7 @@ function AdminDashboard() {
     setSubmitting(true);
 
     const method = editing ? 'PUT' : 'POST';
-    const url = editing ? `/api/opportunities/${editing}` : '/api/opportunities';
+    const url = apiUrl(editing ? `/api/opportunities/${editing}` : '/api/opportunities');
 
     try {
       const res = await fetch(url, {
@@ -100,7 +101,7 @@ function AdminDashboard() {
   const handleDelete = async (id: string) => {
     if (!window.confirm('Are you sure you want to delete this opportunity?')) return;
     try {
-      await fetch(`/api/opportunities/${id}`, {
+      await fetch(apiUrl(`/api/opportunities/${id}`), {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
