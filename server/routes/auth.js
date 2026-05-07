@@ -1,12 +1,12 @@
 const express = require('express');
 const { db } = require('../firebase');
-const { requireAuth } = require('../middleware/auth');
+const { requireAuth, verifyToken } = require('../middleware/auth');
 
 const router = express.Router();
 
 // POST /api/auth/register — called from frontend after Firebase Auth creates the user
 // Creates the Firestore user doc with role='student'
-router.post('/register', requireAuth, async (req, res) => {
+router.post('/register', verifyToken, async (req, res) => {
   try {
     const { name } = req.body;
     const { uid, email } = req.user;
