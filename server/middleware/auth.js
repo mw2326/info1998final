@@ -18,7 +18,8 @@ async function verifyToken(req, res, next) {
   }
 }
 
-// Verifies the token AND requires the user to already have a Firestore doc.
+// Verifies the token AND ensures a Firestore user doc exists.
+// Auto-creates the doc for valid Firebase users who missed the /register step.
 async function requireAuth(req, res, next) {
   const header = req.headers.authorization;
   if (!header?.startsWith('Bearer ')) {
@@ -31,10 +32,18 @@ async function requireAuth(req, res, next) {
     const userDoc = await db.collection('users').doc(decoded.uid).get();
 
     if (!userDoc.exists) {
-      return res.status(401).json({ error: 'User not found' });
+      const userData = {
+        name: decoded.name || '',
+        email: decoded.email || '',
+        role: 'student',
+        createdAt: new Date().toISOString(),
+      };
+      await db.collection('users').doc(decoded.uid).set(userData);
+      req.user = { uid: decoded.uid, ...userData };
+    } else {
+      req.user = { uid: decoded.uid, ...userDoc.data() };
     }
 
-    req.user = { uid: decoded.uid, ...userDoc.data() };
     next();
   } catch {
     res.status(401).json({ error: 'Invalid or expired token' });
